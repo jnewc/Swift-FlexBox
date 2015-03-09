@@ -1,0 +1,20 @@
+{
+	"name": "Swift-FlexBox",
+	"version": "0.1.0",
+	"summary": "Swift-FlexBox is a simple and lightweight FlexBox implementation written in Swift.",
+	"homepage": "https://github.com/jnewc/Swift-FlexBox",
+	"social_media_url": "https://twitter.com/jacknewc",
+	"authors": {
+		"Jack Newcombe": "jack@oma-studios.co.uk"
+	},
+	"source": {
+		"git": "https://github.com/jnewc/Swift-FlexBox.git",
+		"tag": "v0.1.0"
+	},
+	"license": "Apache License, Version 2.0",
+	"requires_arc": true,
+	"platforms": {
+		"ios": "8.0",
+		"osx": "10.10"
+	}
+}

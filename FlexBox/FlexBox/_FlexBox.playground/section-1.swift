@@ -18,8 +18,8 @@ func createSubview(width: CGFloat, height: CGFloat, colorMult: CGFloat, flex: In
     
     var c : CGFloat = CGFloat(0.25 + (0.5 / colorMult));
     v.backgroundColor = UIColor( red: c, green: c, blue: c, alpha: 1.0);
-    v.layer.borderColor = UIColor.whiteColor().CGColor
-    v.layer.borderWidth = 1.0;
+//    v.layer.borderColor = UIColor.whiteColor().CGColor
+//    v.layer.borderWidth = 1.0;
     
     return v;
 }
@@ -46,9 +46,9 @@ func createFlexBox(orient : FlexOrient, orientAlign : FlexAlign, crossAlign: Fle
     
     box.backgroundColor = UIColor(white: 0.8, alpha: 1.0);
     
-    box += createSubview(32.0, 32.0, 1.0, 8);
-    box += createSubview(32.0, 32.0, 1.5, 2);
-    box += createSubview(32.0, 32.0, 2.0, 1);
+    box += createSubview(32.0, 32.0, 1.0, 0);
+    box += createSubview(32.0, 32.0, 1.5, 1);
+    box += createSubview(32.0, 32.0, 2.0, 0);
     box += createSubview(32.0, 32.0, 2.5, 1);
     
     return box;
@@ -98,6 +98,9 @@ box_V_Justify_Justify;
 
 let box_V_Stretch_Stretch = createFlexBox(FlexOrient.Horizontal, FlexAlign.Stretch, FlexAlign.Stretch);
 
+let box_flex_test = createFlexBox(FlexOrient.Horizontal, FlexAlign.Flex, FlexAlign.Stretch);
 
+box_flex_test.layoutSubviews();
 
+let b = box_flex_test;
 

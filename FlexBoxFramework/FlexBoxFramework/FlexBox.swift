@@ -164,15 +164,37 @@ public class FlexBox : UIView
         
         case FlexAlign.Flex:
             let flex = views.reduce(0, combine: { $0 + $1.flex });
-            let segmentSize = self.getOrientAxisSize(self) / CGFloat(flex);
+            
+            var addedSize : CGFloat = 0;
+            for view in views {
+                if(view.flex == 0) {
+                    addedSize += self.getOrientAxisSize(view);
+                }
+            }
+            
+            if(addedSize > self.getOrientAxisSize(self)) {
+                NSException(name: "BadValue", reason: "Size of non-flexs child views too large.", userInfo: nil);
+            }
+            
+            let size = self.getOrientAxisSize(self) - addedSize;
+            
+            println("size=\(size), addedSize=\(addedSize), flex=\(flex)");
+            
+            let segmentSize = size / CGFloat(flex);
             
             var position : CGFloat = 0.0;
             
             for view in views {
                 setOrientAxisPosition(view, position: position);
-                let size = segmentSize * CGFloat(view.flex);
-                setOrientAxisSize(view, size: size);
-                position += size;
+                var w : CGFloat;
+                if(view.flex > 0) {
+                    w = segmentSize * CGFloat(view.flex);
+                } else {
+                    w = self.getOrientAxisSize(view);
+                }
+                
+                setOrientAxisSize(view, size: w);
+                position += w;
             }
             
         break;

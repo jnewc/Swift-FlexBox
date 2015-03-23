@@ -11,6 +11,7 @@
 		"git": "https://github.com/jnewc/Swift-FlexBox.git",
 		"tag": "v0.1.0"
 	},
+	"source_files": "FlexBoxFramework/FlexBoxFramework/*.swift",
 	"license": "Apache License, Version 2.0",
 	"requires_arc": true,
 	"platforms": {

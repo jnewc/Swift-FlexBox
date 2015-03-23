@@ -112,7 +112,7 @@ public class FlexBox : UIView
     // -- Subview Layout ----------------------------------------------------------------------------------------------------
     
     override public func layoutSubviews() {
-        let views : [UIView] = self.subviews as! [UIView];
+        let views : [UIView] = self.subviews as [UIView];
         let count = views.count;
         
         layoutOrientAxis(views);
@@ -121,7 +121,7 @@ public class FlexBox : UIView
             self.bringSubviewToFront(view);
         }
         
-        NSLog("FlexBox: layoutSubviews: %@", NSStringFromCGRect(views[0].frame));
+        //NSLog("FlexBox: layoutSubviews: %@", NSStringFromCGRect(views[0].frame));
     }
     
     private func layoutOrientAxis(views: [UIView]) {
@@ -323,7 +323,22 @@ public class FlexBox : UIView
         get { return self.orient == FlexOrient.Vertical; }
     }
     
+    // -- Layout Utilities --------------------------------------------------------------------------------------------------
     
+    public class func fromDictionary(dict: Dictionary<String, AnyObject>) {
+        
+        let keys = dict.keys;
+        
+        for key in keys {
+            let data : AnyObject = dict[key]!;
+            if (data is Dictionary<String, AnyObject>) {
+                
+            } else if data is Array<Dictionary<String, AnyObject>> {
+                
+            }
+            
+        }
+    }
     
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import FlexBoxFramework
 
 func * (color: UIColor, mult: CGFloat) -> UIColor {
@@ -77,6 +78,7 @@ class ViewController: UIViewController {
             contentView
         ) as UIView!;
         
+        
     }
     
     override func viewDidLoad() {
@@ -110,12 +112,12 @@ class ViewController: UIViewController {
         let url : NSURL = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric")!;
         let data = NSData(contentsOfURL: url);
         
-        let map : NSDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as! NSDictionary;
-        let main : NSDictionary = map.objectForKey("main") as! NSDictionary;
-        let weather : NSDictionary = (map.objectForKey("weather") as! NSArray)[0] as! NSDictionary;
+        let map : NSDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: nil) as NSDictionary;
+        let main : NSDictionary = map.objectForKey("main") as NSDictionary;
+        let weather : NSDictionary = (map.objectForKey("weather") as NSArray)[0] as NSDictionary;
         
         setTitleText("Weather");
-        setLabels(map["name"] as! String, text2: String(format: "%.2f", (main["temp"] as! NSNumber).floatValue) + "°C", text3: weather["main"] as! String, isLink: false);
+        setLabels(map["name"] as String, text2: String(format: "%.2f", (main["temp"] as NSNumber).floatValue) + "°C", text3: weather["main"] as String, isLink: false);
         
         link = "";
     }
@@ -126,6 +128,10 @@ class ViewController: UIViewController {
             let url : NSURL = NSURL(string: "https://reddit.com/" + self.link)!;
             UIApplication.sharedApplication().openURL(url);
         }
+        
+        var clazz : AnyClass = NSClassFromString("UILabel");
+        var type : NSObject.Type = clazz as NSObject.Type;
+        var inst = type();
     }
     
     func setLabels(text1: String, text2: String, text3: String, isLink: Bool) {
